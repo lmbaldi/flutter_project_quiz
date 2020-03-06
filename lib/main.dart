@@ -25,7 +25,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
   }
 
   bool get hasSelectedQuestions{
-    //size of list is always de last element of list minus one
+    //size of list is always the last element of list minus one
     //means we have a selected question
     return _selectedQuestions < _questions.length;
   }
