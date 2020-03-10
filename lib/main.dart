@@ -24,6 +24,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
     }
   }
 
+  void _restartQuiz(){
+    setState(() {
+      _selectedQuestions = 0;
+      _totalScore = 0;
+    });
+  }
+
   bool get hasSelectedQuestions{
     //size of list is always de last element of list minus one
     //means we have a selected question
@@ -66,7 +73,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Perguntas"),
+          title: Text("Quiz"),
         ),
         body: hasSelectedQuestions
             ? Quiz(
@@ -74,7 +81,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 selectedQuestions: _selectedQuestions,
                 respond: _respond,
               )
-            : Result(),
+            : Result(_totalScore, _restartQuiz),
       ),
     );
   }
